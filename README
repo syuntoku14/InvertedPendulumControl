@@ -1,0 +1,37 @@
+In order to activate the simulation tools, run:
+```
+addpath('/home/syuntoku14/OneDrive/matlab/mfiles/ip_toolbox_1.0.2/iptools')
+```
+
+Also, you need to run 'cdip_para.m' or 'adip_para' to configure some parameters.
+In addition to that, z_0, theta_0, dz_0, dtheta_0 are required for cart_driven 
+and theta1_0, theta2_0, dtheta1_0, dtheta2_0 are required for arm_driven.
+
+Example:
+```
+addpath('/home/syuntoku14/OneDrive/matlab/mfiles/ip_toolbox_1.0.2/iptools')
+cdip_para
+z_0 = 0;
+theta_0 = 0;
+dz_0 = 0;
+dtheta_0 = 0;
+```
+
+Then, run the simulation. You can see the animation by:
+```
+theta = phi + pi;
+cdip_anime
+```
+
+The animation tool requires only theta, z and t. 
+Here, theta is the pendulum angle from vertical (up) and clockwise.
+You can save the animation just typing the following code:
+```
+save_avi('inv_pend.avi', 10, frame)
+```
+
+If you wish to convert avi to mp4, type the following command.
+
+```
+for filename in *.avi; do ffmpeg -i $filename -strict -2 ${filename%.avi}.mp4; done
+```
